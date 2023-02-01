@@ -26,7 +26,7 @@ public class Consumer {
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
 
     // Name of the queue we will receive messages from
-    private static String subject = "TESTQUEUE1";
+    private static String subject = "TESTQUEUE2";
     
     private Connection connection;
     private Session session;
@@ -55,7 +55,7 @@ public class Consumer {
         connection = connectionFactory.createConnection();
         connection.start();
 
-        // Creating session for seding messages
+        // Creating session for sending messages
         session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
     }
     
@@ -87,7 +87,7 @@ public class Consumer {
     
     private void createPerson() throws JMSException {
     	XStream xstream = new XStream();
-//    	xstream.alias("Person", Person.class);
+    	xstream.alias("Person", Person.class);
     	if (message instanceof TextMessage) {
     		TextMessage msg = (TextMessage)message; 
     		Person p2 = (Person)xstream.fromXML(msg.getText());
