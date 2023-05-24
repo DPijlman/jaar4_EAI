@@ -105,11 +105,11 @@ public class Bus{
     	XStream xstream = new XStream();
     	//TODO zorg er voor dat de XML-tags niet het volledige pad van de 
     	//     omgezettte klassen bevat
-//    	xstream.alias(?????);
-//    	xstream.alias(?????);
+    	xstream.alias("Bericht", Bericht.class);
+    	xstream.alias("ETA", ETA.class);
     	//TODO maak de XML String aan en verstuur het bericht
-//    	String xml = ?????;
-//    	Producer producer = new Producer();
-//    	producer.?????;		
+    	String xml = xstream.toXML(bericht);
+    	Producer producer = new Producer();
+    	producer.sendBericht(xml);;		
 	}
 }
